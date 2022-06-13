@@ -15,6 +15,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
@@ -28,37 +35,82 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Chandan")
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                    ) {
+                        CustomText("Chandan")
+                        CustomText3()
+                    }
                 }
             }
         }
     }
 
     @Composable
-    fun Greeting(name: String) {
-        Box(
+    fun CustomText(name: String) {
+        Text(
+            text = "Hello 👋 $name",
             modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Box(
-                modifier = Modifier
-                    .background(Color.Yellow)
-                    .padding(16.dp),
-            ) {
-                Text(
-                    text = "Hello 👋 $name",
-                    style = Typography.h1
-                )
+                .background(MaterialTheme.colors.primary) // order matters
+                .padding(16.dp),
+            color = Color.White,
+            fontSize = MaterialTheme.typography.h2.fontSize,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
+    }
+
+    @Composable
+    fun CustomText2() {
+        Text(
+            buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(
+                        color = MaterialTheme.colors.primary,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = MaterialTheme.typography.h1.fontSize
+                    )
+                ) {
+                    append("H")
+                }
+
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Yellow,
+                    )
+                ) {
+                    append("E")
+                }
+
+                append("L")
+                append("L")
+                append("O")
             }
-        }
+        )
+    }
+
+    @Composable
+    fun CustomText3() {
+        Text(
+            text = "Hello!".repeat(50),
+            modifier = Modifier.padding(16.dp),
+            maxLines = 4,
+            overflow = TextOverflow.Ellipsis,
+        )
     }
 
     @Preview(showBackground = true)
     @Composable
     fun DefaultPreview() {
         LearnComposeTheme {
-            Greeting(name = "Chandan")
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+            ) {
+                CustomText("Chandan")
+                CustomText3()
+            }
         }
     }
 }
