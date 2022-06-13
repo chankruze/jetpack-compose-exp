@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import `in`.geekofia.learncompose.ui.theme.LearnComposeTheme
 import `in`.geekofia.learncompose.ui.theme.Typography
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -24,77 +25,40 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
+                        .fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Greeting("Chandan")
-                        CustomItem(weight = 1f, color = MaterialTheme.colors.secondary)
-                        Row(
-                            modifier = Modifier.weight(1f),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            CustomItem(weight = 1f, color = MaterialTheme.colors.error)
-                            CustomItem(weight = 1f)
-                        }
-                    }
-
+                    Greeting("Chandan")
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(
-        text = "Hello 👋 $name",
-        style = Typography.h1
-    )
-}
-
-@Composable
-fun ColumnScope.CustomItem(weight: Float, color: Color = MaterialTheme.colors.primary) {
-    Surface(
-        modifier = Modifier
-            .width(200.dp)
-            .weight(weight),
-        color = color
-    ) {}
-}
-
-@Composable
-fun RowScope.CustomItem(weight: Float, color: Color = MaterialTheme.colors.primary) {
-    Surface(
-        modifier = Modifier
-            .height(200.dp)
-            .weight(weight),
-        color = color
-    ) {}
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    LearnComposeTheme {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+    @Composable
+    fun Greeting(name: String) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            CustomItem(weight = 3f, color = MaterialTheme.colors.secondary)
-            CustomItem(weight = 1f)
+            Box(
+                modifier = Modifier
+                    .background(Color.Yellow)
+                    .padding(16.dp),
+            ) {
+                Text(
+                    text = "Hello 👋 $name",
+                    style = Typography.h1
+                )
+            }
         }
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            CustomItem(weight = 3f, color = MaterialTheme.colors.secondary)
-            CustomItem(weight = 1f)
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun DefaultPreview() {
+        LearnComposeTheme {
+            Greeting(name = "Chandan")
         }
     }
 }
