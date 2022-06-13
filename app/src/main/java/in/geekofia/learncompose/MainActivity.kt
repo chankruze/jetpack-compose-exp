@@ -11,6 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import `in`.geekofia.learncompose.ui.theme.LearnComposeTheme
+import `in`.geekofia.learncompose.ui.theme.Typography
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +26,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    Column(
+                        Modifier.padding(16.dp)
+                    ) {
+                        Greeting("Chandan")
+                    }
                 }
             }
         }
@@ -31,13 +39,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    Text(
+        text = "Hello 👋 $name",
+        style = Typography.h1
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     LearnComposeTheme {
-        Greeting("Android")
+        Column {
+            Greeting("Chandan")
+        }
     }
 }
