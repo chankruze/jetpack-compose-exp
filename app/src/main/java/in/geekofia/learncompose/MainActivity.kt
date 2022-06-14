@@ -41,83 +41,9 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize(),
                     ) {
-                        CustomText("Chandan")
-                        CustomText3()
+
                     }
                 }
-            }
-        }
-    }
-
-    @Composable
-    fun CustomText(name: String) {
-        Text(
-            text = "Hello 👋 $name",
-            modifier = Modifier
-                .background(MaterialTheme.colors.primary) // order matters
-                .padding(16.dp),
-            color = Color.White,
-            fontSize = MaterialTheme.typography.h2.fontSize,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
-        )
-    }
-
-    @Composable
-    fun CustomText2() {
-        Text(
-            buildAnnotatedString {
-                withStyle(
-                    style = SpanStyle(
-                        color = MaterialTheme.colors.primary,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = MaterialTheme.typography.h1.fontSize
-                    )
-                ) {
-                    append("H")
-                }
-
-                withStyle(
-                    style = SpanStyle(
-                        color = Color.Yellow,
-                    )
-                ) {
-                    append("E")
-                }
-
-                append("L")
-                append("L")
-                append("O")
-            }
-        )
-    }
-
-    @Composable
-    fun CustomText3() {
-        SelectionContainer {
-            Column {
-                Text(
-                    text = "Hello!".repeat(50),
-                    modifier = Modifier.padding(16.dp),
-                    maxLines = 4,
-                    overflow = TextOverflow.Ellipsis,
-                )
-
-                DisableSelection {
-                    Text(
-                        text = "Hello!".repeat(50),
-                        modifier = Modifier.padding(16.dp),
-                        maxLines = 4,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-
-                Text(
-                    text = "Hello!".repeat(50),
-                    modifier = Modifier.padding(16.dp),
-                    maxLines = 4,
-                    overflow = TextOverflow.Ellipsis,
-                )
             }
         }
     }
@@ -130,8 +56,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxSize(),
             ) {
-                CustomText("Chandan")
-                CustomText3()
+
             }
         }
     }
