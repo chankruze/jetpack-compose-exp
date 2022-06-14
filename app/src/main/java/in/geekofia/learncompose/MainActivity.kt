@@ -13,6 +13,8 @@ import `in`.geekofia.learncompose.ui.theme.LearnComposeTheme
 import `in`.geekofia.learncompose.ui.theme.Typography
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
@@ -92,12 +94,32 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun CustomText3() {
-        Text(
-            text = "Hello!".repeat(50),
-            modifier = Modifier.padding(16.dp),
-            maxLines = 4,
-            overflow = TextOverflow.Ellipsis,
-        )
+        SelectionContainer {
+            Column {
+                Text(
+                    text = "Hello!".repeat(50),
+                    modifier = Modifier.padding(16.dp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis,
+                )
+
+                DisableSelection {
+                    Text(
+                        text = "Hello!".repeat(50),
+                        modifier = Modifier.padding(16.dp),
+                        maxLines = 4,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+
+                Text(
+                    text = "Hello!".repeat(50),
+                    modifier = Modifier.padding(16.dp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
     }
 
     @Preview(showBackground = true)
